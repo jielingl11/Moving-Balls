@@ -4,12 +4,15 @@
 Created on Mon Aug  8 12:13:07 2022
 
 @author: jielinglee
-"""
 
-'''
-This is the section for me to practise writing the same function using the OOP concept,
-otherwise I will forget completely 
-'''
+In this file, I work with the method of  
+(1) initilise the postion and the radius 
+(2) find the overlapping region and ball number 
+(3) sort the ball pairs by the amount of region overlapping
+(4) move the ball pair overlapped the most
+(5) continue until the overlapping function equals zero 
+
+"""
 
 import pylab as pl
 import numpy as np
@@ -112,7 +115,7 @@ class Simulation():
 			for j in range(i+1, len(self.balls),1):
 				diff_centre= np.linalg.norm(Balls[i].centre- Balls[j].centre)
 				two_radius= Balls[i].equ_radius+ Balls[j].equ_radius
-				if diff_centre - two_radius <= 0:
+				if diff_centre - two_radius < 0:
 					print('ball number', i, 'and', j, 'are overlapped')
 					break
 		else: 
