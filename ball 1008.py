@@ -4,15 +4,12 @@
 Created on Mon Aug  8 12:13:07 2022
 
 @author: jielinglee
-
-In this file, I work with the method of  
-(1) initilise the postion and the radius 
-(2) find the overlapping region and ball number 
-(3) sort the ball pairs by the amount of region overlapping
-(4) move the ball pair overlapped the most
-(5) continue until the overlapping function equals zero 
-
 """
+
+'''
+This is the section for me to practise writing the same function using the OOP concept,
+otherwise I will forget completely 
+'''
 
 import pylab as pl
 import numpy as np
@@ -78,7 +75,7 @@ class Simulation():
 				self.overlap_sequence.append([overlap,i,j]) # record all overlap and pairs
 				
 		self.overlap_sequence = sorted(self.overlap_sequence, key = lambda t: t[0], reverse= True) # sort by how much the region overlaps 
-		#print(self.overlap_sequence)
+# 		print(self.overlap_sequence)
 # 		self.change_next() # refresh next overlap parameters
 # 	def change_next(self):
 # 		self.overlapping = self.overlap_sequence[0][0]
@@ -90,7 +87,6 @@ class Simulation():
 # 		self.overlap_sequence[0][0] = self.balls[self.i].overlap[self.j]
 		i = self.overlap_sequence[0][1]
 		j = self.overlap_sequence[0][2]
-		print([i, j, self.balls[i].centre, self.balls[j].centre, math.dist(self.balls[i].centre, self.balls[j].centre)-self.balls[i].equ_radius-self.balls[j].equ_radius])
 		self.balls[i].move(self.balls[j])
 		#self.overlap_sequence[0][0]= self.balls[i].overlap(self.balls[j])
 		#update every other overlap region 
@@ -99,7 +95,7 @@ class Simulation():
 			ball2= self.overlap_sequence[index][2]
 			self.overlap_sequence[index][0]= self.balls[ball1].overlap(self.balls[ball2])
 		self.overlap_sequence = sorted(self.overlap_sequence, key = lambda t: t[0], reverse= True) 
-		#print(self.overlap_sequence)
+# 		print(self.overlap_sequence)
 			
 	def overlap_function(self):
 		overlap_fun=0
@@ -115,6 +111,7 @@ class Simulation():
 			for j in range(i+1, len(self.balls),1):
 				diff_centre= np.linalg.norm(Balls[i].centre- Balls[j].centre)
 				two_radius= Balls[i].equ_radius+ Balls[j].equ_radius
+				diff= diff_centre - two_radius
 				if diff_centre - two_radius < 0:
 					print('ball number', i, 'and', j, 'are overlapped')
 					break
@@ -124,7 +121,7 @@ class Simulation():
 	def run(self):
 		while self.overlap_function() != 0:
 			self.advance()
-		#self.check()
+		self.check()
 			
 	
 	
