@@ -5,6 +5,6 @@ The overlap function is calculated, which is the sum of the overlapping distance
 and it is zero when the final arrangement has been reached. To reduce the function to zero, the particles are randomly selected to perform a move. 
 The move is rejected if it increases the overlap function; otherwise, it is accepted.
 
-
+![alt text](https://github.com/jielingl11/Moving-Balls/blob/method.png)
 
 
