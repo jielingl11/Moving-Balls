@@ -6,5 +6,5 @@ and it is zero when the final arrangement has been reached. To reduce the functi
 The move is rejected if it increases the overlap function; otherwise, it is accepted.
 
 
-<img src="method.png" alt="drawing" width="550"/>
+<img src="method.png" alt="drawing" width="450"/>
 
